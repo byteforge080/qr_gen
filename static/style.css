@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial';
+}
+
+body {
+    background: #05010a;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ---------------- BACKGROUND GRID ---------------- */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -2;
+}
+
+/* ---------------- NEON GLOW ORBS ---------------- */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, #8a2be2, transparent 40%),
+                radial-gradient(circle at 80% 70%, #ff00cc, transparent 40%),
+                radial-gradient(circle at 50% 50%, #00ffff, transparent 50%);
+    filter: blur(120px);
+    z-index: -1;
+    animation: floatGlow 8s infinite alternate;
+}
+
+@keyframes floatGlow {
+    from { transform: scale(1); }
+    to { transform: scale(1.2) rotate(5deg); }
+}
+
+/* ---------------- HEADER ---------------- */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 32px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px #a855f7;
+}
+
+.sub {
+    text-align: center;
+    opacity: 0.6;
+    margin-bottom: 30px;
+}
+
+/* ---------------- CONTAINER ---------------- */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ---------------- GLASS CARDS ---------------- */
+.card {
+    width: 340px;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 25px rgba(168,85,247,0.2),
+        inset 0 0 10px rgba(255,255,255,0.05);
+
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 0 40px rgba(168,85,247,0.4);
+}
+
+/* ---------------- INPUT ---------------- */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(0,0,0,0.4);
+    color: white;
+}
+
+/* ---------------- BUTTON ---------------- */
+button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    background: linear-gradient(90deg, #7f00ff, #e100ff);
+    color: white;
+    font-weight: bold;
+
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #a855f7;
+}
+
+/* button glow wave */
+button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    top: 0;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-20deg);
+}
+
+button:hover::after {
+    animation: shine 0.6s forwards;
+}
+
+@keyframes shine {
+    100% { left: 120%; }
+}
+
+/* ---------------- QR IMAGE ---------------- */
+img {
+    width: 220px;
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(168,85,247,0.4);
+}
+
+/* ---------------- RESULT TEXT ---------------- */
+#result {
+    margin-top: 12px;
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+/* ---------------- SMALL TERMINAL EFFECT ---------------- */
+.card h2 {
+    font-family: monospace;
+    color: #a855f7;
+    margin-bottom: 10px;
+}

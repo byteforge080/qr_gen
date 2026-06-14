@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ByteForge QR Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="container">
+
+    <h1>⚡ BYTEFORGE QR ENGINE</h1>
+    <p class="sub">Generate • Scan • Decode</p>
+
+    <!-- GENERATE -->
+    <div class="card glass">
+        <h2>Generate QR</h2>
+
+        <input id="text" placeholder="Enter text or URL">
+
+        <button onclick="generateQR()">Generate</button>
+
+        <img id="qr" />
+    </div>
+
+    <!-- SCAN FILE -->
+    <div class="card glass">
+        <h2>Scan QR (File Upload)</h2>
+
+        <input type="file" id="file">
+
+        <button onclick="scanQR()">Scan File</button>
+
+        <p id="result">Result will appear here</p>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
