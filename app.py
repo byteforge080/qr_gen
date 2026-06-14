@@ -1,3 +1,41 @@
+<<<<<<< HEAD
+from flask import Flask, render_template, request, jsonify
+import qrcode
+import os
+from PIL import Image
+
+app = Flask(__name__)
+
+GENERATED_FOLDER = "static/generated"
+if not os.path.exists(GENERATED_FOLDER):
+    os.makedirs(GENERATED_FOLDER)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+# ---------------- QR GENERATE ----------------
+@app.route("/generate", methods=["POST"])
+def generate():
+    data = request.json.get("data")
+
+    if not data:
+        return jsonify({"error": "No data"}), 400
+
+    filepath = os.path.join(GENERATED_FOLDER, "qr.png")
+
+    img = qrcode.make(data)
+    img.save(filepath)
+
+    return jsonify({"image": "/static/generated/qr.png"})
+
+# ---------------- QR SCAN FROM FILE ----------------
+
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+=======
 from flask import Flask, render_template, request, jsonify
 import qrcode
 import os
@@ -47,4 +85,5 @@ import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
+>>>>>>> dbb20c46b443c6b12169b0401cf6cf329844e037
     app.run(host="0.0.0.0", port=port)
